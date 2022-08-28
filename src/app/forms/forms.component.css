@@ -1,0 +1,77 @@
+.container{
+    margin-left: 2%;
+    margin-top: 3%;
+    /* width: 250% */
+}
+
+.mat-form-field{
+    position: relative;
+    font-weight: bold;
+    font-size: 15px;
+    padding-top: 5px;
+    width:250px;
+    height: 80px
+}
+.mat-label{
+    font-weight: bold;
+    font-size: 20px;   
+    background-color: black;
+}
+
+.mat-form-field:hover{
+    /* background-color:#738585;
+    border-radius: 5px; */
+    /* height: 70px; */
+    transform: translate(5px);
+}
+.mat-form-field::before, .mat-form-field::after{
+    content: "";
+    position: absolute;
+    background-color: #aee0da ;
+    border-radius: 2px;
+    transition: all .4s;
+}
+.mat-form-field::before{
+    width:8px;
+    height: 66%;
+    top:10;
+    left: 0px;
+}
+
+.mat-radio-button ~ .mat-radio-button {
+    margin-left: 16px;
+    border-color: blue ;
+  }
+  .mat-radio-checke{
+      background-color: brown;
+  }
+.pass{
+    float: right;
+    position: absolute;
+    right: 0px;
+    left: 30%;
+    /* width: px; */
+    padding: 10px;
+    margin-top: 0%;
+    font-weight: bold;
+}
+
+   table{
+       border-collapse: collapse;
+       width: 80%;
+   } 
+   th,td{
+       border:10px solid #000000;
+        text-align: center;
+        padding: 10px;
+        font-size: 12px;
+        border-inline-width: 10px;
+   }
+
+   th{
+       background-color: aquamarine;
+       border-right-color: black;
+   }
+   td{
+       background-color: rgb(57, 231, 231);
+   }

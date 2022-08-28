@@ -1,0 +1,140 @@
+
+     <div class="container" [formGroup] = "userForm" >
+      <div class="pass">
+        <app-two [childPosts]="parentPosts"></app-two>
+      </div>       
+    <mat-form-field  appearance="fill" >
+      <mat-label>First Name</mat-label>
+      <input matInput placeholder="enter ur 1st Name" formControlName="name" required>
+    </mat-form-field>
+   <br>
+    <mat-form-field  appearance="fill">
+      <mat-label>Surname</mat-label>
+      <input  matInput placeholder="enter ur surname" formControlName="sname" >
+      <mat-error *ngIf="userForm.get('sname')?.hasError('required')">Please Pro</mat-error>
+    </mat-form-field>
+  <br>
+    <mat-form-field appearance="fill">
+      <mat-label>Age</mat-label>
+      <input matInput placeholder="Enter ur age" formControlName="age"required >
+    </mat-form-field>
+  <br>
+    <!-- <mat-form-field appearance="fill">
+      <mat-label>D.O.B.</mat-label>
+      <input matInput [matDatepicker]="datepicker" placeholder="Select Date" formControlName="dob"required>
+      <mat-datepicker-toggle matSuffix [for]="datepicker"></mat-datepicker-toggle>
+      <mat-datepicker #datepicker></mat-datepicker>
+    </mat-form-field> -->
+    <mat-form-field  appearance="fill">
+      <mat-label>Date Range</mat-label>
+      <mat-date-range-input  [rangePicker]="datarangePicker">
+        <input matStartDate placeholder="Start date(DD/MM/YYYY)" formControlName="start">
+        <input matEndDate placeholder="End date" formControlName="end">
+      </mat-date-range-input>
+      <mat-datepicker-toggle matSuffix [for]="datarangePicker"></mat-datepicker-toggle>
+      <mat-date-range-picker #datarangePicker></mat-date-range-picker>
+    </mat-form-field>
+    <!-- </div> -->
+  <br>
+    <mat-form-field appearance="fill">
+      <mat-select required formControlName="gen" required>
+        <mat-option value="Male">Male</mat-option>
+        <mat-option value="Female">Female</mat-option>
+        <mat-option value="Others">Others</mat-option>
+      </mat-select>
+      <mat-label><mat-icon>perm_identity</mat-icon> Gender</mat-label>
+    </mat-form-field>
+  <br>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Phone No.</mat-label>
+      <mat-icon matSuffix>phone</mat-icon>
+      <input matInput placeholder="Mbl NO." formControlName="num" required >
+      <mat-error *ngIf="userForm.get('num')?.hasError('pattern')">Enter a Valid Mobile Number</mat-error>
+      <mat-error *ngIf="userForm.get('num')?.hasError('required')">fill the details</mat-error>
+
+    </mat-form-field>
+  <br>
+    <mat-form-field appearance="fill" >
+      <mat-label>Email</mat-label>
+      <input id="email"  matInput placeholder="enter ur mail id" formControlName="email" required >
+      <mat-error *ngIf="userForm.get('email')?.hasError('required')">fill the details</mat-error>
+      <mat-error *ngIf="userForm.get('email')?.hasError('email')">Enter Vaild Email ID</mat-error>
+
+    </mat-form-field>
+    <!-- <br><br> -->
+    <p style="font-weight: bold;">Dept</p>
+      <mat-radio-group formControlName="dept" required >
+        <mat-radio-button value="Mech">Mech</mat-radio-button>
+        <mat-radio-button value="IT">IT</mat-radio-button>
+        <mat-radio-button value="EEE">EEE</mat-radio-button>
+      </mat-radio-group>
+      <br><br>
+  <!-- <br>
+    <h3 style="font-weight: bold;">Expertise :</h3>
+    <mat-checkbox value="Python" formControlName="Python">Python</mat-checkbox> &nbsp; &nbsp;
+    <mat-checkbox value="Angular"  formControlName="Angular">Angular</mat-checkbox>
+    <br><br>
+    <mat-checkbox value="React" formControlName="React">React </mat-checkbox> &nbsp; &nbsp; &nbsp; 
+    <mat-checkbox value="Java" formControlName="Java">Java </mat-checkbox>
+  <br><br> -->
+    <mat-form-field appearance="fill">
+      <mat-label>Password</mat-label>
+      <input type="password" matInput placeholder="Enter ur password" formControlName="pwd">
+      <mat-error *ngIf="userForm.get('pwd')?.hasError('required')">Enter Password</mat-error>
+      <mat-error *ngIf="userForm.get('pwd')?.hasError('minlength')">Enter atleast 6 letters</mat-error>
+      <mat-error *ngIf="userForm.get('pwd')?.hasError('pattern')">Enter one Alphabet in Captial letter<br>Enter one Alphabet in Lower Case<br> Enter one numerical Value </mat-error>
+
+    </mat-form-field>
+  <br><br>
+    <mat-form-field appearance="fill">
+      <mat-label>Confirm your password</mat-label>
+      <input matInput [type]="hide ? 'password' : 'text'" formControlName="cpwd">
+      <button mat-icon-button matSuffix (click)="hide = !hide" >
+        <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+      </button>
+      <mat-error *ngIf="userForm.get('cpwd')?.hasError('required')">Enter Password</mat-error>
+      <mat-error *ngIf="userForm.get('cpwd')?.hasError('MustMatch')">Password does not Much</mat-error>
+    </mat-form-field> 
+    <br>
+    <mat-checkbox value="TC"  >Accept Terms and Conditions </mat-checkbox>
+<br><br>
+  <p>
+    <button mat-raised-button color="primary"  [disabled]="userForm.invalid" (click)="onSubmit()">Submit</button>
+  </p>
+  <button mat-raised-button color="primary" (click)="onPost()">upload</button>
+  <button mat-raised-button color="primary" (click)="onDelete()">Delete</button>
+
+</div>
+<!-- <table >
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>SurName</th>
+      <th>Age</th>
+      <th>DoR Start</th>
+      <th>DoR End</th>
+      <th>Gender</th>
+      <th>Mobile No.</th>
+      <th>Email</th>
+      <th>Department</th>
+      <th>Password</th>
+      <th>Confirm Password</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let c of userData ">
+      <td>{{c.name}}</td>
+      <td>{{c.sname}}</td>
+      <td>{{c.age}}</td>
+      <td>{{c.start}}</td>
+      <td>{{c.end}}</td>
+      <td>{{c.gen}}</td>
+      <td>{{c.num}}</td>
+      <td>{{c.email}}</td>
+      <td>{{c.dept}}</td>
+      <td>{{c.pwd}}</td>
+      <td>{{c.cpwd}}</td>
+    </tr>
+  </tbody>
+</table> -->

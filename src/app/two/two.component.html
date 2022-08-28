@@ -1,0 +1,101 @@
+<!-- <h2>Values :</h2> -->
+
+
+ <div *ngIf="childPosts.length">
+  <table mat-table [dataSource]="childPosts" class="mat-elevation-z8 demo-table">
+
+    <ng-container matColumnDef="Name">
+      <th mat-header-cell *matHeaderCellDef> Name </th>
+      <!-- <span *ngFor="let element of childPosts"> -->
+      <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+    <!-- </span> -->
+    </ng-container>
+  
+    <ng-container matColumnDef="SurName">
+      <th mat-header-cell *matHeaderCellDef> SurName </th>
+      <td mat-cell *matCellDef="let element"> {{element.sname}} </td>
+    </ng-container>  
+  
+    <ng-container matColumnDef="Age">
+      <th mat-header-cell *matHeaderCellDef> Age </th>
+      <td mat-cell *matCellDef="let element"> {{element.age}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="DoRStart">
+      <th mat-header-cell *matHeaderCellDef> DoRStart </th>
+      <td mat-cell *matCellDef="let element"> {{element.start | date}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="DoREnd">
+      <th mat-header-cell *matHeaderCellDef> DoREnd </th>
+      <td mat-cell *matCellDef="let element"> {{element.end | date}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="Gender">
+      <th mat-header-cell *matHeaderCellDef> Gender </th>
+      <td mat-cell *matCellDef="let element"> {{element.gen}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="Mobile">
+      <th mat-header-cell *matHeaderCellDef> Mobile No. </th>
+      <td mat-cell *matCellDef="let element"> {{element.num}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="Mail">
+      <th mat-header-cell *matHeaderCellDef> Mail ID </th>
+      <td mat-cell *matCellDef="let element"> {{element.email}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="Department">
+      <th mat-header-cell *matHeaderCellDef> Department </th>
+      <td mat-cell *matCellDef="let element"> {{element.dept}} </td>
+      - <td mat-cell *matCellDef="let element"> {{element.dept}} </td>
+
+    </ng-container>
+
+    <ng-container matColumnDef="Password">
+      <th mat-header-cell *matHeaderCellDef> Password </th>
+      <td mat-cell *matCellDef="let element"> {{element.pwd}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="ConfirmPassword">
+      <th mat-header-cell *matHeaderCellDef> Confirm Password </th>
+      <td mat-cell *matCellDef="let element"> {{element.cpwd}} </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    
+  </table> 
+  
+</div> 
+
+
+ <table class="bottomBorder">
+    <tr>
+      <th>Name</th>
+      <th>SurName</th>
+      <th>Age</th>
+      <th>Dor.Start</th>
+      <th>DoR.End</th>
+      <th>Gender</th>
+      <th>Mobile No.</th>
+      <th>Email</th>
+      <th>Department</th>
+      <th>Password</th>
+      <th>Confirm Password</th>
+    </tr>
+    <tr *ngFor="let p of childPosts">
+      <td>{{p.name}}</td>
+      <td>{{p.sname}}</td>
+      <td>{{p.age}}</td>
+      <td>{{p.start | date}}</td>
+      <td>{{p.end | date}}</td>
+      <td>{{p.gen}}</td>
+      <td>{{p.num}}</td>
+      <td>{{p.email}}</td>
+      <td>{{p.dept}}</td>
+      <td>{{p.pwd}}</td>
+      <td>{{p.cpwd}}</td>
+    </tr>
+</table> 
